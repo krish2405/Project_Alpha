@@ -25,7 +25,7 @@ public class Userinteraction {
         while(k==1)
         {
             System.out.println("What do You want to do :");
-            System.out.println("1.) Add User , 2.)Show All User, 3.) Find User Information , 4.) Remove User, 5.) Show All Books, 6.)Add books , 7.)Find Book Information , 8.) Update User 9.) Update Book information 10).ALL User with Book info 11.) User With book  12.) Exit");
+            System.out.println("1.) Add User,\n 2.)Show All User,\n 3.) Find User Information ,\n 4.) Remove User,\n 5.) Show All Books,\n 6.)Add books ,\n 7.)Find Book Information ,\n 8.) Update User\n 9.) Update Book information\n 10).ALL User with Book info\n 11.) User With book\n  12.) Exit");
            try{ 
             
             int option =sc.nextInt();
@@ -94,7 +94,7 @@ public class Userinteraction {
         while(u==1)
         {
             System.out.println("What do You want to do :");
-            System.out.println("1.) Borrow , 2.)Return , 3.) User Information , 4.) Show All Books 5.) Show All USer with Books 6.) Show all Users 7.)Update Information");
+            System.out.println("1.) Borrow , \n"+ "2.)Return\n , 3.) User Information\n , 4.) Show All Books\n 5.) Show All USer with Books\n 6.) Show all Users\n 7.)Update Information\n 8.)Exit");
             try{ 
             
                 int option =sc.nextInt();
@@ -126,7 +126,8 @@ public class Userinteraction {
                     break;
     
                     default:
-                    UserDatamangement.Update_user();
+                    
+                    u=0;
                     break;
                 }
         }catch(InputMismatchException e){

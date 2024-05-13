@@ -388,7 +388,7 @@ public class UserDatamangement {
                         break;
                 }
 
-                sc.close();
+                // sc.close();
             
         } 
         catch (Exception e) {

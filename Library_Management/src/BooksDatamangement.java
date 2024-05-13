@@ -153,7 +153,7 @@ public class BooksDatamangement {
 
         if (count1 == 0) {
             System.out.println("No user found");
-            sc.close();
+            // sc.close();
             return;
 
         }
@@ -166,7 +166,7 @@ public class BooksDatamangement {
         int countr = bidc.getInt(1);
         if (countr == 0) {
             System.out.println("No Book found");
-            sc.close();
+            // sc.close();
             return;
 
         }
@@ -229,7 +229,7 @@ public class BooksDatamangement {
             else{
                 System.out.println("No book found");
             }
-            sc.close();
+            // sc.close();
         } }
         catch (SQLException e) {
             e.printStackTrace();
@@ -255,7 +255,7 @@ public class BooksDatamangement {
 
         if (count1 == 0) {
             System.out.println("No user found");
-            sc.close();
+            // sc.close();
             return;
 
         }
@@ -268,7 +268,7 @@ public class BooksDatamangement {
         int countr = bidc.getInt(1);
         if (countr == 0) {
             System.out.println("No Book found");
-            sc.close();
+            // sc.close();
             return;
 
         }
@@ -323,7 +323,7 @@ public class BooksDatamangement {
             else{
                 System.out.println("No book found");
             }
-            sc.close();
+            // sc.close();
         }
         else{
             System.out.println("You don't have any book to return.");
@@ -360,7 +360,7 @@ public class BooksDatamangement {
                 System.out.println("Book not found in database ");
             }
             
-            sc.close();
+            // sc.close();
             
         } catch (Exception e) {
             
@@ -519,7 +519,7 @@ public class BooksDatamangement {
                         break;
                 }
 
-                sc.close();
+                // sc.close();
             
         } }
         else{
