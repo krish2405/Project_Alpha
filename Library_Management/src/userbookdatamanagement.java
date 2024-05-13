@@ -3,8 +3,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-// import com.mysql.cj.protocol.Resultset;
-// import com.mysql.cj.xdevapi.PreparableStatement;
 
 public class userbookdatamanagement {
 
@@ -21,7 +19,7 @@ public class userbookdatamanagement {
     public static void userswithbookinfo(){
         try {
              Scanner sc =new Scanner(System.in);
-           
+
 
             System.out.println("Enter user ID:");
             int u_id=sc.nextInt();
@@ -115,13 +113,7 @@ public class userbookdatamanagement {
             }
 
         }
-            // else{
-            //     System.out.println("This user has not borrowed any book");
-            // }
-       
-  
-
-          
+             
 
         } catch (Exception e) {
             e.printStackTrace();
