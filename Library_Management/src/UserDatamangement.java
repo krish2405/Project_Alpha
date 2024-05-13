@@ -4,9 +4,31 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
 // import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class UserDatamangement {
+
+    // Validations
+    public static boolean validateName(String name) {
+        // Name should not be empty
+        return !name.trim().isEmpty();
+    }
+
+    public static boolean validatePassword(String password) {
+        // Password should have at least one special character
+        Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
+        Matcher matcher = pattern.matcher(password);
+        return matcher.find();
+    }
+
+    public static boolean validateEmail(String email) {
+        // Email should contain '@'
+        return email.contains("@");
+    }
+
+
 
     // Table for user and admin
     public static void createTable(String tableName, String columnDefinitions) {
@@ -27,6 +49,7 @@ public class UserDatamangement {
             Scanner sc = new Scanner(System.in);
             System.out.println("Please Enter your name");
             String name = sc.nextLine();
+            
            
             System.out.println("Please Enter your password");
             String password = sc.nextLine();
@@ -65,9 +88,17 @@ public class UserDatamangement {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter name to insert:");
             String name = scanner.nextLine();
+            if (!validateName(name)) {
+                System.out.println("Name cannot be empty.");
+                return;
+            }
 
             System.out.println("Enter password to insert:");
             String password = scanner.nextLine();
+            if (!validatePassword(password)) {
+                System.out.println("Password must contain at least one special character.");
+                return;
+            }
 
 
             // System.out.println("Enter age to insert:");
@@ -97,6 +128,11 @@ public class UserDatamangement {
         }
             System.out.println("Enter email to insert:");
             String email = scanner.nextLine();
+            if (!validateEmail(email)) {
+                System.out.println("Email must contain '@'.");
+                return;
+            }
+
             System.out.print("Is user an admin? (true/false): ");
             boolean isAdmin = Boolean.parseBoolean(scanner.nextLine());
 
@@ -183,7 +219,7 @@ public class UserDatamangement {
                 System.out.println("User not found in database ");
             }
             
-            sc.close();
+            // sc.close();
             
         } catch (Exception e) {
             
@@ -211,6 +247,7 @@ public class UserDatamangement {
 
         if (count > 0) {
             System.out.println("You have book in your account .Your id caanot be deleted.");
+            return ;
         }
 
             String query = "DELETE FROM adminuser WHERE name=? and u_id=?";
@@ -226,7 +263,7 @@ public class UserDatamangement {
                 System.out.println("No data found");
             }
 
-            sc.close(); 
+            // sc.close(); 
         } 
         catch (SQLException e) {
             e.printStackTrace();

@@ -8,6 +8,21 @@ import java.util.Scanner;
 
 public class BooksDatamangement {
 
+    public static boolean validateStringInput(String input) {
+        // Input should not be empty or null
+        return input != null && !input.trim().isEmpty();
+    }
+
+    public static boolean validateQuantity(int quantity) {
+        // Quantity should be a positive integer
+        return quantity > 0;
+    }
+
+    public static boolean validateReviews(double reviews) {
+        // Reviews should be in the range 0 to 5
+        return reviews >= 0 && reviews <= 5;
+    }
+
     // Creating Books table
      public static void createbookstable(String tableName,String columnDefinitions){
         try {
@@ -56,23 +71,45 @@ public class BooksDatamangement {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter Book name :");
             String b_name = scanner.nextLine();
+            if (!validateStringInput(b_name)) {
+                System.out.println("Book name cannot be empty.");
+                return;
+            }
+
+
 
             System.out.println("Enter Geners:");
             String geners = scanner.nextLine();
+            if (!validateStringInput(geners)) {
+                System.out.println("Genre cannot be empty.");
+                return;
+            }
 
 
             System.out.println("Enter author:");
             String author = scanner.nextLine();
+            if (!validateStringInput(author)) {
+                System.out.println("Author cannot be empty.");
+                return;
+            }
 
             System.out.println("Enter quantity:");
             int quantity = scanner.nextInt();
+            if (!validateQuantity(quantity)) {
+                System.out.println("Quantity must be a positive integer.");
+                return;
+            }
             
            
             System.out.println("Enter Price:");
             Double price = scanner.nextDouble();
 
-            System.out.println("Enter reviews ");
+            System.out.println("Enter reviews (0 -5) ");
             Double Reviews = scanner.nextDouble();
+            if (!validateReviews(Reviews)) {
+                System.out.println("Reviews must be in the range 0 to 5.");
+                return;
+            }
 
             // Adjusted the query to exclude the DOB column and use CURRENT_DATE for Signup_date and Modification_date
             String query = "INSERT INTO books (book_name,geners, author, quantity, price , Reviews) VALUES (?,?,?,?,?, ?)";
@@ -89,7 +126,7 @@ public class BooksDatamangement {
             }
 
             System.out.println("Data inserted successfully.");
-            scanner.close();
+            // scanner.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
