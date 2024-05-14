@@ -1,3 +1,4 @@
+import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,6 +34,27 @@ public class BooksDatamangement {
             e.printStackTrace();
         }
 
+    }
+
+    // Check if table exists
+    public static boolean tableExists(String tableName) {
+        try {
+            DatabaseMetaData metaData = Databaseconnection.connection.getMetaData();
+            ResultSet resultSet = metaData.getTables(null, null, tableName, null);
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Create table if it doesn't exist
+    public static void createTableIfNotExists(String tableName, String columnDefinitions) {
+        if (!tableExists(tableName)) {
+            createbookstable(tableName, columnDefinitions);
+        } else {
+            System.out.println("Table already exists.");
+        }
     }
 
      public static void ShowAllBooks(){

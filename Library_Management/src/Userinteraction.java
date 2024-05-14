@@ -6,6 +6,52 @@ public class Userinteraction {
         Databaseconnection.connect();
 
         Scanner sc= new Scanner(System.in);
+        String tablenamebooks="Books";
+        String columndefintion="b_id INT AUTO_INCREMENT PRIMARY KEY, "+
+                                "book_name VARCHAR(255), "+
+                                "geners VARCHAR(255), "+
+                                "author VARCHAR(255), "+
+                                "quantity INT, "+
+                                "price DECIMAL(10,2), "+
+                                "Reviews DECIMAL(10,2) ";
+
+        String tableNameadminuser = "adminuser";
+        String columnDefinitionforadminuser = "u_id INT PRIMARY KEY AUTO_INCREMENT, " +
+                                        "name VARCHAR(255) NOT NULL, " +
+                                        "Password VARCHAR(255) NOT NULL, " +
+                                        "age INT, " +
+                                        "DOB DATE, " +
+                                        "Signup_date DATE, " +
+                                        "Modification_date DATE, " +
+                                        "email VARCHAR(255), " +
+                                        "isadmin BOOLEAN";
+                            
+        String tablenameuserbook="userwithbook";
+        String columndefintionuserbook="bb_id INT AUTO_INCREMENT PRIMARY KEY, "+
+                                "b_id INT, "+
+                                "u_id INT, "+
+                                "return_date DATE, "+
+                                "borrow_date DATE , "+
+                                "FOREIGN KEY (b_id) REFERENCES Books(b_id), "+
+                                "FOREIGN KEY (u_id) REFERENCES adminuser(u_id)";
+
+        
+
+
+       BooksDatamangement.createTableIfNotExists(tablenamebooks,columndefintion);
+       int admintablecheck=UserDatamangement.createTableIfNotExists(tableNameadminuser, columnDefinitionforadminuser);
+       if(admintablecheck==1){
+          System.out.println("new table created so creating a dummy admin");
+          System.out.println("We are creating a dummy admin for you so that you can have all the privileges");
+          UserDatamangement.createadmin();
+         
+
+       }
+       else{
+            System.out.println("you have the table in db");
+       }
+       userbookdatamanagement.createTableIfNotExists(tablenameuserbook,columndefintionuserbook);
+
          
         
         String logininfo=UserDatamangement.login();
@@ -94,7 +140,7 @@ public class Userinteraction {
         while(u==1)
         {
             System.out.println("What do You want to do :");
-            System.out.println("1.) Borrow , \n"+ "2.)Return\n , 3.) User Information\n , 4.) Show All Books\n 5.) Show All USer with Books\n 6.) Show all Users\n 7.)Update Information\n 8.)Exit");
+            System.out.println("1.) Borrow , \n"+ "2.)Return ,\n  3.) User Information,\n 4.) Show All Books,\n 5.) Show All USer with Books,\n 6.) Show all Users,\n 7.)Update Information,\n 8.)Exit");
             try{ 
             
                 int option =sc.nextInt();

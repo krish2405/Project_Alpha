@@ -40,6 +40,31 @@ public class UserDatamangement {
             e.printStackTrace();
         }
     }
+     
+    // Check if table exists
+    public static boolean tableExists(String tableName) {
+        try {
+            DatabaseMetaData metaData = Databaseconnection.connection.getMetaData();
+            ResultSet resultSet = metaData.getTables(null, null, tableName, null);
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Create table if it doesn't exist
+    public static int createTableIfNotExists(String tableName, String columnDefinitions) {
+        if (!tableExists(tableName)) {
+            createTable(tableName, columnDefinitions);
+            System.out.println("Table has been created");
+            return 1;
+        } else {
+            System.out.println("Table already exists.");
+            return 0;
+        }
+    }
+
 
     // Login for user and admin
     @SuppressWarnings("resource")
@@ -78,6 +103,42 @@ public class UserDatamangement {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void createadmin(){
+        try {
+            String query = "INSERT INTO adminuser (name,Password, age, DOB,Signup_date, Modification_date, email, isadmin) VALUES (?,?,?,?, CURRENT_DATE, CURRENT_DATE, ?, ?)";
+            PreparedStatement preparedStatement = Databaseconnection.connection.prepareStatement(query);
+            String dobstring="2002-06-12";
+            Date dob = null;
+            
+                        try {
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            dob = new Date(dateFormat.parse(dobstring).getTime());
+                        } catch (ParseException e) {
+                            System.err.println("Invalid date format. Please enter the date in YYYY-MM-DD format.");
+                            e.printStackTrace();
+                            return;
+                        }
+            preparedStatement.setString(1, "admin1");
+            preparedStatement.setString(2, "password@123");
+            preparedStatement.setInt(3, 23);
+            preparedStatement.setDate(4, dob);
+            preparedStatement.setString(5, "admin@123");
+            preparedStatement.setBoolean(6, true);
+            int rowinserted = preparedStatement.executeUpdate();
+            if (rowinserted > 0) {
+                System.out.println("Insertion successful");
+            }
+
+            System.out.println("Data inserted successfully.");
+
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            
+        }
+
     }
 
     // Method to insert data into the table of useradmin
