@@ -282,7 +282,7 @@ public class UserDatamangement {
                 System.out.println("Enter Your Password");
                 String Password=sc.nextLine();
                 System.out.println("Enter field to update :");
-                System.out.println("1.)Name 2.) age 3.) Password 4.)DOB 5) Email 6.)Exit");
+                System.out.println("1.)Name 2.) Password 3.)DOB 4) Email 5.)Exit");
                 int choice=sc.nextInt();
                 sc.nextLine();
                 switch (choice) {
@@ -304,25 +304,25 @@ public class UserDatamangement {
                     }
                         break;
 
-                    case 2:
-                    System.out.println("Enter Your Age:");
-                    int age = sc.nextInt();
-                    String query2 = "UPDATE adminuser SET age=? , Modification_date =? where u_id=? and Password=?";
-                    PreparedStatement preparedStatement2 = Databaseconnection.connection.prepareStatement(query2);
-                    preparedStatement2.setInt(1,age) ;
-                    preparedStatement2.setDate(2, sqlCurrentDate);
-                    preparedStatement2.setInt(3, u_id);
-                    preparedStatement2.setString(4, Password);
-                    int rowsUpdatedAge = preparedStatement2.executeUpdate();
-                    if (rowsUpdatedAge > 0) {
-                        System.out.println("Age updated successfully.");
-                    }
-                    else{
-                        System.out.println("Sorry Password or User id does not match");
-                    }
-                        break;
+                    // case 2:
+                    // System.out.println("Enter Your Age:");
+                    // int age = sc.nextInt();
+                    // String query2 = "UPDATE adminuser SET age=? , Modification_date =? where u_id=? and Password=?";
+                    // PreparedStatement preparedStatement2 = Databaseconnection.connection.prepareStatement(query2);
+                    // preparedStatement2.setInt(1,age) ;
+                    // preparedStatement2.setDate(2, sqlCurrentDate);
+                    // preparedStatement2.setInt(3, u_id);
+                    // preparedStatement2.setString(4, Password);
+                    // int rowsUpdatedAge = preparedStatement2.executeUpdate();
+                    // if (rowsUpdatedAge > 0) {
+                    //     System.out.println("Age updated successfully.");
+                    // }
+                    // else{
+                    //     System.out.println("Sorry Password or User id does not match");
+                    // }
+                    //     break;
 
-                    case 3:
+                    case 2:
                         System.out.println("Enter Your Password:");
                         String password = sc.nextLine();
                         String queryPassword = "UPDATE adminuser SET Password=?, Modification_date=? WHERE u_id=? AND Password=?";
@@ -340,7 +340,7 @@ public class UserDatamangement {
                         }
                         break;
 
-                    case 4:
+                    case 3:
                         System.out.println("Enter Your DOB (YYYY-MM-DD):");
                         String dobString = sc.nextLine();
                         Date dob = null;
@@ -366,7 +366,7 @@ public class UserDatamangement {
                         }
                         break;
                     
-                    case 5:
+                    case 4:
                         System.out.println("Enter Your Email:");
                         String email = sc.nextLine();
                         String queryEmail = "UPDATE adminuser SET email=?, Modification_date=? WHERE u_id=? AND Password=?";
