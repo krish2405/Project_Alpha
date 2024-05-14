@@ -81,7 +81,7 @@ public class UserDatamangement {
     }
 
     // Method to insert data into the table of useradmin
-    // @SuppressWarnings("resource")
+    
     @SuppressWarnings("resource")
     public static void insertData() {
         try {
@@ -101,10 +101,9 @@ public class UserDatamangement {
             }
 
 
-            // System.out.println("Enter age to insert:");
+            
             int age;
-            // Consume newline character
-            // scanner.nextLine(); //
+           
                         System.out.print("Enter DOB (YYYY-MM-DD): ");
                         String dobString = scanner.nextLine();
                         Date dob = null;
