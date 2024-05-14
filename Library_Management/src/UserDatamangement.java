@@ -188,7 +188,7 @@ public class UserDatamangement {
     }
 
    
-
+    @SuppressWarnings("resource")
     public static void USerinfo(){
         try {
             Scanner sc =new Scanner(System.in);
@@ -228,6 +228,7 @@ public class UserDatamangement {
     } 
 
     // Method to delete data from the table useradmin
+    @SuppressWarnings("resource")
     public static void deleteUserData() {
         try {
             Scanner sc =new Scanner(System.in);
@@ -270,6 +271,7 @@ public class UserDatamangement {
         }
     }
   
+    @SuppressWarnings("resource")
     public static void Update_user(){
         try {
 

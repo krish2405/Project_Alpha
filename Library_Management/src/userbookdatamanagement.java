@@ -16,6 +16,7 @@ public class userbookdatamanagement {
         }
     }
 
+    @SuppressWarnings("resource")
     public static void userswithbookinfo(){
         try {
              Scanner sc =new Scanner(System.in);

@@ -65,7 +65,7 @@ public class BooksDatamangement {
     }
 
     // insert book info into books table
-    
+    @SuppressWarnings("resource")
     public static void insertBooksData() {
         try {
             Scanner scanner = new Scanner(System.in);
@@ -133,6 +133,7 @@ public class BooksDatamangement {
         }
     }
 
+    @SuppressWarnings("resource")
     public static void borrow(){
         try {
             Scanner sc=new Scanner(System.in);
@@ -237,6 +238,7 @@ public class BooksDatamangement {
     }
 
     // Returning book
+    @SuppressWarnings("resource")
     public static void returnbook(){
         try {
             Scanner sc=new Scanner(System.in);
@@ -335,6 +337,7 @@ public class BooksDatamangement {
     }
     
     // Book information
+    @SuppressWarnings("resource")
     public static void Bookinfo(){
         try {
             Scanner sc =new Scanner(System.in);
@@ -368,7 +371,7 @@ public class BooksDatamangement {
         }
     } 
 
-
+    @SuppressWarnings("resource")
     public static void Update_Book(){
         try {
 
