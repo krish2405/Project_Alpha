@@ -48,6 +48,11 @@ Open in Java IDE: Open the project in your preferred Java Integrated Development
 Import MySQL JDBC Driver: If not already included in the project, import the MySQL JDBC driver to enable database connectivity.
 Run the Application: Run the DatabaseManager.java file from your IDE to start the application.
 
+If using Windows System run the creatingdb.bat file .Give your mysql username and password .A library database will be created.
+
+Now in databaseconnection file give your username and passowrd and you are good to go.
+Run the userinteraction file.
+
 
 Usage
 Login: Upon running the application, users and administrators will be prompted to log in using their credentials.
