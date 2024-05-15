@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -155,7 +156,22 @@ public class UserDatamangement {
             }
 
             System.out.println("Enter password to insert:");
-            String password = scanner.nextLine();
+            Console console = System.console();
+            if (console == null) {
+            System.out.println("No console available");
+            return;
+            }
+            // String password = scanner.nextLine();
+            char[] passwordArray = console.readPassword("Enter your password: ");
+            String password = new String(passwordArray);
+
+            System.out.println("Password entered: " + password);
+            // Use the password in your application logic
+        
+            // Clear the password array for security
+            java.util.Arrays.fill(passwordArray, ' ');
+
+
             if (!validatePassword(password)) {
                 System.out.println("Password must contain at least one special character.");
                 return;
